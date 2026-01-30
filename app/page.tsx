@@ -30,7 +30,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full" />
             <div className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-[5px] border-primary/80">
               <Image 
-                src="/me.png" 
+                src="/photo-portofolio.png" 
                 alt="Profile" 
                 fill 
                 className="object-cover"
