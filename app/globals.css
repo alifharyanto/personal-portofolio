@@ -12,10 +12,9 @@ html, body {
   padding: 0;
   height: 100vh;
   width: 100%;
-  overflow: hidden; /* Tetap kunci layar agar tidak scrolling */
+  overflow: hidden; 
 }
 
-/* Partikel Bintang Kecil */
 .particle {
   position: absolute;
   background: white;
@@ -23,17 +22,18 @@ html, body {
   pointer-events: none;
 }
 
-/* Underline Menu Aktif */
 .nav-underline {
   position: relative;
 }
+
+/* FIX: Height diganti ke 4px agar tidak menutupi teks */
 .nav-underline::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -8px; /* Jarak dari teks */
   left: 0;
   width: 100%;
-  height: 10px; /* UBAH DI SINI: Ganti 2px ke 3px atau 4px agar lebih bold */
+  height: 4px; /* Tebal yang pas untuk kesan bold */
   background-color: #fbbf24;
   border-radius: 2px;
 }

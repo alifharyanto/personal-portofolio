@@ -15,7 +15,6 @@ const Particles = () => {
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 0.8,
-      // DURASI DIPERCEPAT: 3-7 detik agar gerak lebih lincah
       duration: Math.random() * 10 + 10, 
       moveX: (Math.random() - 0.5) * 200, 
       moveY: (Math.random() - 0.5) * 200,
@@ -63,10 +62,10 @@ export default function Home() {
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6 bg-[#121212]">
       <Particles />
       
-      {/* pt-32 di mobile agar turun jauh dari header logo & github */}
-      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl gap-8 md:gap-20 z-10 pt-32 md:pt-0">
+      {/* FIX: pt-20 agar konten lebih naik dan proporsional di HP */}
+      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl gap-6 md:gap-20 z-10 pt-20 md:pt-0">
         
-        {/* FOTO */}
+        {/* FOTO: Menggunakan w-64 h-64 agar ukurannya mantap di mobile */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,20 +73,20 @@ export default function Home() {
         >
           <div className="relative">
             <div className="absolute inset-0 bg-primary/30 blur-[80px] rounded-full" />
-            <div className="relative w-50 h-50 md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-[5px] border-primary/80 shadow-2xl">
+            <div className="relative w-64 h-64 md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-[5px] border-primary/80 shadow-2xl">
               <Image src="/photo-portofolio.png" alt="photo-portofolio-img" fill className="object-cover" priority />
             </div>
           </div>
         </motion.div>
 
         {/* TEKS */}
-        <div className="order-2 md:order-1 text-center md:text-left pb-10 md:pb-0">
-          <p className="text-primary text-sm md:text-lg mb-2 font-bold">Hello World, I'm</p>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+        <div className="order-2 md:order-1 text-center md:text-left pb-6 md:pb-0">
+          <p className="text-primary text-sm md:text-lg mb-1 font-bold">Hello World, I'm</p>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
             Alif Haryanto
           </h1>
           
-          <div className="text-xl md:text-3xl font-extrabold mb-6 min-h-[40px] text-primary italic">
+          <div className="text-xl md:text-3xl font-extrabold mb-4 min-h-[40px] text-primary italic">
             <Typewriter
               options={{
                 strings: ["Web Developer", "AI Engineer", "Game Developer", "Software Engineering Student"],
@@ -106,7 +105,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* MOBILE FOOTER NAV: text-[12px] dan font-black agar bold banget */}
+      {/* MOBILE FOOTER NAV */}
       <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
         <div className="nav-glass flex justify-around items-center h-20 px-4">
           {navItems.map((item) => {
