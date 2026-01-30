@@ -37,7 +37,7 @@ const Navbar = () => {
         </div>
 
         {/* Github Right */}
-        <a href="https://github.com" target="_blank" className="text-2xl text-white hover:text-primary transition-all">
+        <a href="https://github.com/alifharyanto" target="_blank" className="text-2xl text-white hover:text-primary transition-all">
           <FaGithub />
         </a>
       </div>
