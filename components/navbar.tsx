@@ -16,28 +16,36 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-8">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo Kuning */}
-        <div className="text-primary font-mono text-xl font-bold">
-          Muhammad Alif<span className="text-white">();</span>
+        {/* Logo: Font Black agar sangat bold */}
+        <div className="text-primary font-mono text-xl md:text-2xl font-black tracking-tighter">
+          Portofolio<span className="text-white">.</span>
         </div>
 
-        {/* Desktop Menu - Tengah */}
+        {/* Desktop Menu: font-bold */}
         <div className="hidden md:flex gap-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.path}
-              className={`text-sm font-semibold transition-all ${
-                pathname === item.path ? "text-white" : "text-gray-500 hover:text-white"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.path;
+            return (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`text-sm font-bold uppercase tracking-tight transition-all ${
+                  isActive ? "text-white nav-underline" : "text-gray-500 hover:text-white"
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Github Right */}
-        <a href="https://github.com/alifharyanto" target="_blank" className="text-2xl text-white hover:text-primary transition-all">
+        <a 
+          href="https://github.com/alifharyanto" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-3xl text-white hover:text-primary transition-all active:scale-90"
+        >
           <FaGithub />
         </a>
       </div>
