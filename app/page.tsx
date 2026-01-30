@@ -16,21 +16,19 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative h-screen w-full flex flex-col items-center justify-center bg-dark overflow-hidden px-6">
+    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
       
-      {/* Container Content */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-10 md:gap-20">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-10 md:gap-20 z-10">
         
-        {/* FOTO (Atas di mobile, Kanan di desktop) */}
+        {/* FOTO: Border tebal 5px & Glow sesuai request */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="order-1 md:order-2 flex justify-center"
         >
           <div className="relative">
-            {/* Glow Kuning Halus */}
-            <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full" />
-            <div className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-[1px] border-primary/50">
+            <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full" />
+            <div className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-[5px] border-primary/80">
               <Image 
                 src="/me.png" 
                 alt="Profile" 
@@ -42,14 +40,13 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* TEKS (Bawah di mobile, Kiri di desktop) */}
+        {/* TEKS: Nama Putih, Typing Kuning */}
         <div className="order-2 md:order-1 text-center md:text-left">
           <p className="text-primary text-sm md:text-lg mb-2 font-medium">Hello World, I'm</p>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-5xl md:text-8xl font-bold text-white mb-4 tracking-tight drop-shadow-md">
             Alif Haryanto
           </h1>
           
-          {/* Typing Writing dengan Cursor | */}
           <div className="text-xl md:text-3xl font-bold mb-6 min-h-[40px] text-primary italic">
             <Typewriter
               options={{
@@ -69,23 +66,26 @@ export default function Home() {
         </div>
       </div>
 
-      {/* MOBILE FOOTER NAV (Hanya muncul di mobile, posisi paling bawah) */}
+      {/* MOBILE FOOTER NAV: Tanpa Underline, Hanya Warna Berubah */}
       <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
         <div className="nav-glass flex justify-around items-center h-20 px-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.path}
-              className={`text-[10px] font-bold uppercase tracking-widest transition-all ${
-                pathname === item.path ? "text-white" : "text-gray-500"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.path;
+            return (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                  isActive ? "text-primary" : "text-gray-500 hover:text-white"
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
       </div>
 
-    </main>
+    </section>
   );
 }

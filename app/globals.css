@@ -1,27 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dark: #0a0a0a;
+  --color-dark: #121212;
   --color-primary: #fbbf24;
 }
 
 :root {
-  background-color: #2d2d2d;
+  background-color: #121212;
   color: white;
-  overflow: hidden; /* Mencegah scroll global jika konten pas di layar */
+  /* overflow: hidden; */ /* Buka ini jika kamu ingin benar-benar tidak bisa scroll di semua device */
 }
 
-/* Animasi kursor ketik */
+body {
+  background-color: #121212;
+}
+
+/* Animasi kursor ketik agar tipis dan elegan */
 .Typewriter__cursor {
   color: #fbbf24;
-  font-weight: thin;
+  font-weight: 100;
 }
 
-/* Glassmorphism untuk Nav Mobile */
+/* Glassmorphism untuk Nav Mobile sesuai referensi */
 .nav-glass {
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(66, 66, 66, 0.409);
-  border-radius: 30px 30px 0 0; /* Melengkung di atas saja sesuai gambar */
+  background: rgba(25, 25, 25, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px 30px 0 0;
 }
