@@ -59,30 +59,37 @@ export default function Home() {
   ];
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6 bg-[#121212]">
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center overflow-hidden px-6 bg-[#121212]">
       <Particles />
       
-      {/* FIX: pt-20 agar konten lebih naik dan proporsional di HP */}
-      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl gap-6 md:gap-20 z-10 pt-20 md:pt-0">
+      {/* Container utama dengan pt-24 agar tidak bentrok dengan header logo/github */}
+      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl gap-4 md:gap-20 z-10 pt-24 md:pt-0 flex-grow pb-24 md:pb-0">
         
-        {/* FOTO: Menggunakan w-64 h-64 agar ukurannya mantap di mobile */}
+        {/* FOTO: Diberi w-64 h-64 tetap agar tidak goyang saat loading */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="order-1 md:order-2 flex justify-center"
+          className="order-1 md:order-2 flex justify-center shrink-0"
         >
-          <div className="relative">
+          <div className="relative w-64 h-64 md:w-[400px] md:h-[400px]">
             <div className="absolute inset-0 bg-primary/30 blur-[80px] rounded-full" />
-            <div className="relative w-64 h-64 md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-[5px] border-primary/80 shadow-2xl">
-              <Image src="/photo-portofolio.png" alt="photo-portofolio-img" fill className="object-cover" priority />
+            <div className="relative w-full h-full rounded-full overflow-hidden border-[5px] border-primary/80 shadow-2xl">
+              <Image 
+                src="/photo-portofolio.png" 
+                alt="photo-portofolio-img" 
+                fill 
+                className="object-cover" 
+                priority 
+                sizes="(max-width: 768px) 256px, 400px"
+              />
             </div>
           </div>
         </motion.div>
 
-        {/* TEKS */}
-        <div className="order-2 md:order-1 text-center md:text-left pb-6 md:pb-0">
-          <p className="text-primary text-sm md:text-lg mb-1 font-bold">Hello World, I'm</p>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
+        {/* TEKS: justify-center di mobile agar tetap di tengah */}
+        <div className="order-2 md:order-1 text-center md:text-left shrink-0">
+          <p className="text-primary text-sm md:text-lg mb-1 font-bold italic">Hello World, I'm</p>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight">
             Alif Haryanto
           </h1>
           
@@ -99,13 +106,13 @@ export default function Home() {
           </div>
 
           <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400 text-sm md:text-lg font-medium">
-            <p>Welcome to My personal website.</p>
+            <p>Welcome to My Portofolio website.</p>
             <span className="animate-wave text-2xl">👋</span>
           </div>
         </div>
       </div>
 
-      {/* MOBILE FOOTER NAV */}
+      {/* MOBILE FOOTER NAV: Navigasi bawah tetap aman */}
       <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
         <div className="nav-glass flex justify-around items-center h-20 px-4">
           {navItems.map((item) => {
