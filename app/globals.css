@@ -5,33 +5,37 @@
   --color-primary: #fbbf24;
 }
 
-/* Kunci layar agar tidak bisa di-scroll */
 html, body {
   background-color: #121212;
   color: white;
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  overflow: hidden; /* Fix scrolling */
+  overflow: hidden; /* Tetap kunci layar agar tidak scrolling */
 }
 
-/* Animasi Melambai (Waving) */
-@keyframes wave {
-  0% { transform: rotate(0deg); }
-  10% { transform: rotate(14deg); }
-  20% { transform: rotate(-8deg); }
-  30% { transform: rotate(14deg); }
-  40% { transform: rotate(-4deg); }
-  50% { transform: rotate(10deg); }
-  60% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+/* Partikel Bintang Kecil */
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.animate-wave {
-  display: inline-block;
-  animation: wave 2.5s infinite;
-  transform-origin: 70% 70%;
+/* Underline Menu Aktif */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fbbf24;
+  border-radius: 2px;
 }
 
 .nav-glass {
@@ -40,4 +44,16 @@ html, body {
   -webkit-backdrop-filter: blur(15px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 30px 30px 0 0;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  20%, 60% { transform: rotate(14deg); }
+  40% { transform: rotate(-8deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave 2.5s infinite;
+  transform-origin: 70% 70%;
 }
