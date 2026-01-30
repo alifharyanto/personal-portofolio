@@ -1,65 +1,91 @@
+"use client";
 import Image from "next/image";
+import Typewriter from "typewriter-effect";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
+  const pathname = usePathname();
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Service", path: "/service" },
+    { name: "Project", path: "/project" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="relative h-screen w-full flex flex-col items-center justify-center bg-dark overflow-hidden px-6">
+      
+      {/* Container Content */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-10 md:gap-20">
+        
+        {/* FOTO (Atas di mobile, Kanan di desktop) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="order-1 md:order-2 flex justify-center"
+        >
+          <div className="relative">
+            {/* Glow Kuning Halus */}
+            <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full" />
+            <div className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-[1px] border-primary/50">
+              <Image 
+                src="/me.png" 
+                alt="Profile" 
+                fill 
+                className="object-cover"
+                priority 
+              />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* TEKS (Bawah di mobile, Kiri di desktop) */}
+        <div className="order-2 md:order-1 text-center md:text-left">
+          <p className="text-primary text-sm md:text-lg mb-2 font-medium">Hello World, I'm</p>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+            Alif Haryanto
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+          
+          {/* Typing Writing dengan Cursor | */}
+          <div className="text-xl md:text-3xl font-bold mb-6 min-h-[40px] text-primary italic">
+            <Typewriter
+              options={{
+                strings: ["Web Developer", "AI Engineer", "Game Developer", "Software Student"],
+                autoStart: true,
+                loop: true,
+                cursor: "|",
+                delay: 60,
+              }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400 text-sm md:text-lg">
+            <p>Welcome to My personal website.</p>
+            <span className="animate-bounce">👋</span>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* MOBILE FOOTER NAV (Hanya muncul di mobile, posisi paling bawah) */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+        <div className="nav-glass flex justify-around items-center h-20 px-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.path}
+              className={`text-[10px] font-bold uppercase tracking-widest transition-all ${
+                pathname === item.path ? "text-white" : "text-gray-500"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+    </main>
   );
 }
