@@ -5,16 +5,28 @@
   --color-primary: #fbbf24;
 }
 
-html, body {
+/* KUNCI PERBAIKAN SCROLL */
+html {
+  /* Memungkinkan scrolling halus */
+  scroll-behavior: smooth;
+}
+
+body {
   background-color: #121212;
   color: white;
   margin: 0;
   padding: 0;
-  height: 100vh;
   width: 100%;
-  overflow: hidden; 
+  /* min-height memastikan body mengikuti panjang konten */
+  min-height: 100vh; 
+  /* overflow-x hidden mencegah website goyang ke kanan-kiri */
+  overflow-x: hidden;
+  /* overflow-y auto memastikan scroll ke bawah AKTIF */
+  overflow-y: auto;
+  position: relative;
 }
 
+/* PARTIKEL BACKGROUND */
 .particle {
   position: absolute;
   background: white;
@@ -22,30 +34,33 @@ html, body {
   pointer-events: none;
 }
 
+/* UNDERLINE NAVIGASI AKTIF */
 .nav-underline {
   position: relative;
 }
 
-/* FIX: Height diganti ke 4px agar tidak menutupi teks */
 .nav-underline::after {
   content: '';
   position: absolute;
-  bottom: -8px; /* Jarak dari teks */
+  bottom: -8px;
   left: 0;
   width: 100%;
-  height: 4px; /* Tebal yang pas untuk kesan bold */
+  height: 4px;
   background-color: #fbbf24;
   border-radius: 2px;
 }
 
+/* FOOTER NAVBAR GLASSMORPHISM */
 .nav-glass {
-  background: rgba(25, 25, 25, 0.85);
+  background: rgba(25, 25, 25, 0.605);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 30px 30px 0 0;
+  /* Membuat sudut melengkung di atas pada mobile footer */
+  border-radius: 25px 25px 0 0;
 }
 
+/* ANIMASI MELAMBAI (WAVING HAND) */
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
   20%, 60% { transform: rotate(14deg); }
@@ -56,4 +71,22 @@ html, body {
   display: inline-block;
   animation: wave 2.5s infinite;
   transform-origin: 70% 70%;
+}
+
+/* CUSTOM SCROLLBAR (Biar makin keren di desktop) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252525;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fbbf24;
 }

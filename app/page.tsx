@@ -114,7 +114,7 @@ export default function Home() {
 
       {/* MOBILE FOOTER NAV: Navigasi bawah tetap aman */}
       <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
-        <div className="nav-glass flex justify-around items-center h-20 px-4">
+        <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
           {navItems.map((item) => {
             const isActive = pathname === item.path;
             return (
