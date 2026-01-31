@@ -1,20 +1,33 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Typewriter from "typewriter-effect";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 import {
   FaXmark, FaInstagram, FaThreads, FaXTwitter, FaTiktok, FaEnvelope,
   FaGithub, FaLinkedinIn, FaCopyright, FaChevronRight, FaWhatsapp, FaBriefcase
 } from "react-icons/fa6";
+import { h1 } from "framer-motion/client";
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState(1);
   const [selectedCert, setSelectedCert] = useState<any>(null);
   const [isImgFull, setIsImgFull] = useState(false);
   const [showSocials, setShowSocials] = useState(false);
+  const [init, setInit] = useState(false);
   const pathname = usePathname();
+
+  // Partikel Initialization
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -24,37 +37,42 @@ export default function AboutPage() {
     { name: "Contact", path: "/contact" },
   ];
 
-  // Menambahkan properti img agar icon muncul kembali
   const languages = [
-    { name: 'HTML', img: '/icons/html.png', status: 'Reasonable' },
-    { name: 'CSS', img: '/icons/css.png', status: 'Reasonable' },
-    { name: 'Javascript', img: '/icons/js.png', status: 'Reasonable' },
-    { name: 'TypeScript', img: '/icons/js.png', status: 'Beginner' },
-    { name: 'Python', img: '/icons/python.png', status: 'Reasonable' },
-    { name: 'Lua', img: '/icons/lua.png', status: 'Advanced' },
-    { name: 'PHP', img: '/icons/php.png', status: 'Beginner' },
+    { name: 'HTML', img: '/icon/html.svg', status: 'Reasonable' },
+    { name: 'CSS', img: '/icon/css.svg', status: 'Reasonable' },
+    { name: 'Javascript', img: '/icon/js.svg', status: 'Reasonable' },
+    { name: 'TypeScript', img: '/icon/typescript.svg', status: 'Beginner' },
+    { name: 'Python', img: '/icon/python.svg', status: 'Reasonable' },
+    { name: 'Lua', img: '/icon/lua.svg', status: 'Advanced' },
+    { name: 'PHP', img: '/icon/php.svg', status: 'Beginner' },
   ];
 
   const frameworks = [
-    { name: 'Next JS', img: '/icons/next.png', status: 'FullStack' },
-    { name: 'React JS', img: '/icons/react.png', status: 'FrontEnd' },
-    { name: 'Tailwind', img: '/icons/tailwind.png', status: 'FrontEnd' },
-    { name: 'Bootstrap', img: '/icons/bootstrap.png', status: 'FrontEnd' },
-    { name: 'MediaPipe', img: '/icons/mediapipe.png', status: 'Vision' },
-    { name: 'SckitLearn', img: '/icons/sckitlearn.png', status: 'Machine Learning' },
-    { name: 'Pandas', img: '/icons/pandas.png', status: 'Data Analysis' },
-    { name: 'PyTorch', img: '/icons/pytorch.png', status: 'DeepLearning' },
+    { name: 'Next JS', img: '/icon/nextjs.png', status: 'FullStack' },
+    { name: 'React JS', img: '/icon/react.svg', status: 'FrontEnd' },
+    { name: 'Tailwind', img: '/icon/tailwind.svg', status: 'FrontEnd' },
+    { name: 'Bootstrap', img: '/icon/bootstrap.svg', status: 'FrontEnd' },
+    { name: 'MediaPipe', img: '/icon/mediapipe.png', status: 'Vision' },
+    { name: 'SckitLearn', img: '/icon/sckitlearn.svg', status: 'Machine Learning' },
+    { name: 'Pandas', img: '/icon/pandas.svg', status: 'Data Analysis' },
+    { name: 'PyTorch', img: '/icon/pytorch.png', status: 'DeepLearning' },
+    { name: 'Django', img: '/icon/django.svg', status: 'API' },
+    { name: 'Flask', img: '/icon/flask.png', status: 'API' },
   ];
 
   const tools = [
-    { name: 'VS Code', img: '/icons/vscode.png', status: 'Code Editor' },
-    { name: 'Antigravity', img: '/icons/antigravity.png', status: 'Code Editor' },
-    { name: 'Roblox Studio', img: '/icons/roblox.png', status: 'Game Engine' },
-    { name: 'Git', img: '/icons/git.png', status: 'Version Control' },
-    { name: 'GitHub', img: '/icons/github.png', status: 'Git Hosting' },
-    { name: 'Xampp', img: '/icons/xampp.png', status: 'Server' },
-    { name: 'NPM', img: '/icons/npm.png', status: 'PKG Manager' },
-    { name: 'PIP', img: '/icons/xampp.png', status: 'PKG Manager' },
+    { name: 'VS Code', img: '/icon/vscode.svg', status: 'Code Editor' },
+    { name: 'Antigravity', img: '/icon/antigravity.png', status: 'Code Editor' },
+    { name: 'Roblox Studio', img: '/icon/robloxstudio.png', status: 'Game Engine' },
+    { name: 'Git', img: '/icon/git.svg', status: 'Version Control' },
+    { name: 'GitHub', img: '/icon/github.svg', status: 'Git Hosting' },
+    { name: 'Vercel', img: '/icon/vercel.svg', status: 'Website Hosting' },
+    { name: 'Netlify', img: '/icon/netlify.svg', status: 'Website Hosting' },
+    { name: 'Xampp', img: '/icon/xampp.svg', status: 'Server' },
+    { name: 'NPM', img: '/icon/npm.svg', status: 'PKG Manager' },
+    { name: 'PIP', img: '/icon/pip.svg', status: 'PKG Manager' },
+    { name: 'Gemini', img: '/icon/gemini.png', status: 'Chatbot AI' },
+    { name: 'ChatGPT', img: '/icon/chatgpt.svg', status: 'Chatbot AI' },
   ];
 
   const certificates = [
@@ -98,7 +116,6 @@ export default function AboutPage() {
       desc: "Saya di kelas online ini belajar tentang pengenalan Machine Learning, Mempelajari dasar-dasar machine learning, sejarah, aplikasinya di berbagai bidang, alur kerja dalam proyek machine learning, mulai dari pengumpulan data hingga evaluasi model dan penerapan, Memahami konsep klasifikasi dalam supervised learning, serta algoritma yang umum digunakan seperti KNN dan Decision Tree, dan Mempelajari Unsurpevised Learning",
       tags: ["Machine Learning", "Data Science", "AI Engineering", "Python"]
     },
-
     {
       id: 5,
       title: "Mengenal Pemograman Komputer",
@@ -109,7 +126,6 @@ export default function AboutPage() {
       desc: "Saya di kelas online ini belajar tentang pengenalan pemrograman komputer, dasar-dasar algoritma, serta konsep dasar dalam pengembangan perangkat lunak.",
       tags: ["Programming", "Algorithms", "Software Development"]
     },
-
     {
       id: 6,
       title: "Belajar Dasar HTML dan CSS",
@@ -124,10 +140,58 @@ export default function AboutPage() {
 
   return (
     <section className="relative min-h-screen w-full bg-[#121212] pt-24 overflow-x-hidden selection:bg-[#fbbf24]/30 selection:text-[#fbbf24]">
-      <div className="max-w-6xl mx-auto space-y-24 pb-10">
+
+      {/* BACKGROUND PARTICLES SYSTEM */}
+      {init && (
+        <Particles
+          id="tsparticles"
+          className="absolute inset-0 z-0"
+          options={{
+            background: { color: { value: "transparent" } },
+            fpsLimit: 120,
+            interactivity: {
+              events: {
+                onHover: { enable: true, mode: "grab" },
+                resize: { enable: true },
+              },
+              modes: {
+                grab: { distance: 140, links: { opacity: 0.5 } },
+              },
+            },
+            particles: {
+              color: { value: "#fbbf24" },
+              links: {
+                color: "#fbbf24",
+                distance: 150,
+                enable: true,
+                opacity: 0.2,
+                width: 1,
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: { default: "bounce" },
+                random: false,
+                speed: 1,
+                straight: false,
+              },
+              number: {
+                density: { enable: true },
+                value: 80,
+              },
+              opacity: { value: 0.3 },
+              shape: { type: "circle" },
+              size: { value: { min: 1, max: 3 } },
+            },
+            detectRetina: true,
+          }}
+        />
+      )}
+
+      <div className="relative z-10 max-w-6xl mx-auto space-y-24 pb-10">
 
         {/* 1. SECTION: ABOUT ME */}
-        <motion.div initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="bg-[#1e1e1f] border border-[#383838] rounded-3xl p-8 md:p-12 shadow-2xl mx-4 md:mx-0">
+        <motion.div initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="bg-[#1e1e1f]/80 backdrop-blur-sm border border-[#383838] rounded-3xl p-8 md:p-12 shadow-2xl mx-4 md:mx-0">
           <header className="flex items-center gap-4 mb-8">
             <h2 className="text-2xl font-bold text-white">About Me</h2>
             <div className="h-[1px] w-24 md:w-96 bg-[#fbbf24] opacity-50" />
@@ -138,8 +202,8 @@ export default function AboutPage() {
             </div>
             <div className="flex-1 space-y-6">
               <div className="text-gray-300 text-base md:text-lg leading-relaxed min-h-[80px]">
-                <Typewriter options={{ delay: 20, cursor: "|" }} onInit={(t) => {
-                  t.typeString("Hi everyone! My name is Muhammad Alif Haryanto. I am a software engineering student. I really enjoy what I do right now.").callFunction(() => {
+                <Typewriter options={{ delay: 0.5, cursor: "|" }} onInit={(t) => {
+                  t.typeString("Hello, my name is Muhammad Alif Haryanto, usually called Alif. I am 16 years old and currently an active student at Wirabuana Vocational High School (SMK), majoring in Software Engineering. I have a strong interest in information technology, especially software development, coding, and artificial intelligence (AI). My interest in coding began when I was in 9th grade at Citayam Plus Junior High School. At that time, programming was not part of the school curriculum, but that did not stop my curiosity. I started learning independently, studying basic programming concepts through articles, documentation, and various online resources. This experience strengthened my passion for technology and motivated me to continue my education in the Software Engineering field. During my studies in Software Engineering, I have continued to develop my technical skills through both school learning and personal exploration. I am used to learning new things independently, especially related to software development, web development, and AI concepts. I enjoy understanding how systems work, from program logic to real-world technology implementation. In my free time, I enjoy reading articles about AI and programming, as well as playing games such as Valorant and Roblox. Through gaming, I am not only a player but also interested in the technical side, including system mechanics, game logic, and game development. This further strengthens my desire to grow in the technology field. Through this portfolio website, I aim to showcase my learning journey, projects, and skills, as well as take an early step toward building a career in technology. I am highly motivated to keep learning, adapting to new technologies, and developing myself into a capable and responsible developer in the future.").callFunction(() => {
                     const cursor = document.querySelector('.Typewriter__cursor') as HTMLElement;
                     if (cursor) cursor.style.display = 'none';
                     setShowSocials(true);
@@ -147,7 +211,7 @@ export default function AboutPage() {
                 }} />
               </div>
               <AnimatePresence>
-                {showSocials && (
+                {showSocials && ( 
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pt-4 border-t border-white/5 flex gap-4">
                     <SocialLink href="https://www.instagram.com/44mhmdaliff_/?utm_source=ig_web_button_share_sheet" icon={<FaInstagram />} />
                     <SocialLink href="https://www.threads.com/@44mhmdaliff_" icon={<FaThreads />} />
@@ -165,8 +229,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-white border-l-4 border-[#fbbf24] pl-4 uppercase italic">Certificates</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {certificates.map((cert) => (
-              <div key={cert.id} className="bg-[#1e1e1f] border border-[#383838] rounded-2xl overflow-hidden group">
-                {/* Rapiin Padding Gambar: Padding seimbang agar enak dipandang */}
+              <div key={cert.id} className="bg-[#1e1e1f]/80 backdrop-blur-sm border border-[#383838] rounded-2xl overflow-hidden group">
                 <div className="p-5">
                   <div className="h-44 overflow-hidden rounded-xl bg-[#1e1e1f] flex items-center justify-center border border-white/5 shadow-inner">
                     <img src={cert.image} className="w-full h-full object-contain p-2" alt={cert.title} />
@@ -182,12 +245,13 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* 3. SECTION: SKILLS (Kembali ke Original dengan Icon) */}
+        {/* 3. SECTION: SKILLS (TIRUAN ANIMASI BAGAS RAKHA) */}
         <div className="px-4 space-y-10">
           <header className="flex items-center gap-4">
             <div className="h-[1px] w-10 md:w-20 bg-[#fbbf24]" />
             <h2 className="text-2xl font-bold text-white">Skills</h2>
           </header>
+
           <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar border-b border-white/5">
             {["Language Programming", "Framework", "Tools"].map((tab, idx) => (
               <button key={tab} onClick={() => setActiveTab(idx + 1)} className={`px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${activeTab === idx + 1 ? 'text-[#fbbf24] bg-[#fbbf24]/10' : 'text-gray-500 hover:text-white'}`}>
@@ -195,15 +259,36 @@ export default function AboutPage() {
               </button>
             ))}
           </div>
+          {/* SKILLS GRID */}
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 xl:grid-cols-4 pt-4">
             {(activeTab === 1 ? languages : activeTab === 2 ? frameworks : tools).map((item) => (
-              <div key={item.name} className="group relative flex cursor-pointer items-center gap-3 rounded border border-[#fbbf24]/20 px-3 py-2 hover:bg-[#fbbf24]/5 hover:border-[#fbbf24] transition-all duration-300 h-16 md:h-20">
-                <div className="flex h-10 w-10 items-center justify-center p-1 group-hover:scale-110 transition-transform">
-                  {item.img ? <img src={item.img} alt={item.name} className="max-h-full" /> : <div className="w-8 h-8 bg-white/5 rounded-md" />}
+              <div
+                key={item.name}
+                className="group relative flex cursor-pointer items-center gap-2 rounded-xl border border-[#fbbf24]/20 px-3 py-2 bg-[#1e1e1f]/40 backdrop-blur-md hover:bg-[#fbbf24]/10 hover:border-[#fbbf24] transition-all duration-300 h-16 md:h-20 overflow-hidden"
+              >
+                {/* ICON CONTAINER: Default kecil, Hover besar */}
+                <div className="flex h-12 w-12 items-center justify-center flex-shrink-0 lg:h-16 lg:w-16 transition-transform duration-300 transform scale-80 group-hover:scale-110">
+                  {item.img ? (
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      /* Ukuran gambar di dalam container */
+                      className="h-[80%] w-[80%] object-contain drop-shadow-2xl transition-all duration-300"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 bg-white/5 rounded-md" />
+                  )}
                 </div>
-                <div className="flex flex-col justify-center overflow-hidden">
-                  <div className="text-[13px] md:text-sm font-bold text-white transition-all group-hover:-translate-y-1">{item.name}</div>
-                  <div className="text-[9px] text-[#fbbf24] opacity-0 group-hover:opacity-100 transition-all font-normal uppercase tracking-tighter">
+
+                {/* TEXT CONTAINER */}
+                <div className="relative flex flex-col justify-center overflow-visible">
+                  {/* Skill Name: Naik ke atas saat hover */}
+                  <div className="text-[13px] md:text-base lg:text-lg font-semibold text-white transition-all duration-300 transform group-hover:-translate-y-2 md:group-hover:-translate-y-3 whitespace-nowrap">
+                    {item.name}
+                  </div>
+
+                  {/* Status Skill: Muncul dari bawah saat hover */}
+                  <div className="absolute left-0 top-[65%] text-[9px] md:text-xs text-[#fbbf24] opacity-0 transition-all duration-300 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 whitespace-nowrap font-medium tracking-tight">
                     {item.status}
                   </div>
                 </div>
@@ -211,24 +296,25 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-
-        {/* COPYRIGHT MOBILE (Style Fixed) */}
-        <div className="md:hidden flex flex-col items-center text-center pt-5 pb-24 space-y-3">
-          <div className="flex items-center gap-2 text-white/50">
-            <FaCopyright size={16} />
-            <span className="text-sm font-black uppercase tracking-[0.2em]">Copyright</span>
-          </div>
-          <div className="flex items-center gap-3 w-full justify-center px-10">
-            <div className="h-[1px] flex-1 bg-[#fbbf24]" />
-            <p className="text-[#fbbf24] text-sm font-bold tracking-widest whitespace-nowrap uppercase">Muhammad Alif Haryanto</p>
-            <div className="h-[1px] flex-1 bg-[#fbbf24]" />
-          </div>
-          <p className="text-white/30 text-sm font-black">2026</p>
-        </div>
       </div>
 
-      {/* FOOTER DESKTOP MODERN (Synced & Updated) */}
-      <footer className="hidden md:block bg-[#1e1e1f] border-t border-[#383838] pt-20 pb-10 px-10">
+      {/* COPYRIGHT MOBILE */}
+      <div className="md:hidden flex flex-col items-center text-center pt-5 pb-24 space-y-3">
+        <div className="flex items-center gap-2 text-white/50">
+          <FaCopyright size={16} />
+          <span className="text-sm font-black uppercase tracking-[0.2em]">Copyright</span>
+        </div>
+        <div className="flex items-center gap-3 w-full justify-center px-10">
+          <div className="h-[1px] flex-1 bg-[#fbbf24]" />
+          <p className="text-[#fbbf24] text-sm font-bold tracking-widest whitespace-nowrap uppercase">Muhammad Alif Haryanto</p>
+          <div className="h-[1px] flex-1 bg-[#fbbf24]" />
+        </div>
+        <p className="text-white/30 text-sm font-black">2026</p>
+      </div>
+
+
+      {/* FOOTER DESKTOP */}
+      <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10">
         <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
           <div className="col-span-2 space-y-6">
             <div className="flex items-center gap-4">
@@ -263,7 +349,6 @@ export default function AboutPage() {
           <div className="space-y-6">
             <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
             <div className="space-y-3">
-              {/* Email */}
               <a href="mailto:alifharyanto201012@gmail.com" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
                 <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
                   <FaEnvelope size={14} />
@@ -274,18 +359,6 @@ export default function AboutPage() {
                 </div>
               </a>
 
-              {/* LinkedIn 
-              /*<a href="https://linkedin.com/in/muhammadalifharyanto" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
-                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
-                  <FaBriefcase size={14} />
-                </div>
-                <div className="overflow-hidden">
-                  <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">LinkedIn</p>
-                  <p className="text-white text-[11px] font-bold truncate">muhammadalifharyanto</p>
-                </div>
-              </a>*/}
-
-              {/* WhatsApp */}
               <a href="https://wa.me/62895404209300" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
                 <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
                   <FaWhatsapp size={14} />
@@ -296,7 +369,6 @@ export default function AboutPage() {
                 </div>
               </a>
 
-              {/* GitHub */}
               <a href="https://github.com/alifharyanto" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
                 <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
                   <FaGithub size={14} />
@@ -316,7 +388,7 @@ export default function AboutPage() {
         </div>
       </footer>
 
-      {/* NAVBAR MOBILE (RE-ADDED & SYNCED) */}
+      {/* NAVBAR MOBILE */}
       <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
         <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
           {navItems.map((item) => {
@@ -325,9 +397,8 @@ export default function AboutPage() {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`text-[12px] font-black uppercase tracking-widest transition-all ${
-                  isActive ? "text-primary nav-underline" : "text-gray-500"
-                }`}
+                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-[#fbbf24] border-b-2 border-[#fbbf24]" : "text-gray-500"
+                  }`}
               >
                 {item.name}
               </Link>
