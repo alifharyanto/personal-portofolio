@@ -190,37 +190,85 @@ export default function AboutPage() {
 
       <div className="relative z-10 max-w-6xl mx-auto space-y-24 pb-10">
 
-        {/* 1. SECTION: ABOUT ME */}
-        <motion.div initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="bg-[#1e1e1f]/80 backdrop-blur-sm border border-[#383838] rounded-3xl p-8 md:p-12 shadow-2xl mx-4 md:mx-0">
+{/* 1. SECTION: ABOUT ME */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }} 
+          viewport={{ once: true }} 
+          className="bg-[#1e1e1f]/80 backdrop-blur-sm border border-[#383838] rounded-3xl p-8 md:p-12 shadow-2xl mx-4 md:mx-0"
+        >
           <header className="flex items-center gap-4 mb-8">
             <h2 className="text-2xl font-bold text-white">About Me</h2>
             <div className="h-[1px] w-24 md:w-96 bg-[#fbbf24] opacity-50" />
           </header>
+
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full border-2 border-[#fbbf24] p-1 flex-shrink-0 mx-auto md:mx-0 overflow-hidden">
-              <img src="/photo-portofolio.png" className="w-full h-full object-cover rounded-full" alt="Alif" />
-            </div>
-            <div className="flex-1 space-y-6">
-              <div className="text-gray-300 text-base md:text-lg leading-relaxed min-h-[80px]">
-                <Typewriter options={{ delay: 0.5, cursor: "|" }} onInit={(t) => {
-                  t.typeString("Hello, my name is Muhammad Alif Haryanto, usually called Alif. I am 16 years old and currently an active student at Wirabuana Vocational High School (SMK), majoring in Software Engineering. I have a strong interest in information technology, especially software development, coding, and artificial intelligence (AI). My interest in coding began when I was in 9th grade at Citayam Plus Junior High School. At that time, programming was not part of the school curriculum, but that did not stop my curiosity. I started learning independently, studying basic programming concepts through articles, documentation, and various online resources. This experience strengthened my passion for technology and motivated me to continue my education in the Software Engineering field. During my studies in Software Engineering, I have continued to develop my technical skills through both school learning and personal exploration. I am used to learning new things independently, especially related to software development, web development, and AI concepts. I enjoy understanding how systems work, from program logic to real-world technology implementation. In my free time, I enjoy reading articles about AI and programming, as well as playing games such as Valorant and Roblox. Through gaming, I am not only a player but also interested in the technical side, including system mechanics, game logic, and game development. This further strengthens my desire to grow in the technology field. Through this portfolio website, I aim to showcase my learning journey, projects, and skills, as well as take an early step toward building a career in technology. I am highly motivated to keep learning, adapting to new technologies, and developing myself into a capable and responsible developer in the future.").callFunction(() => {
-                    const cursor = document.querySelector('.Typewriter__cursor') as HTMLElement;
-                    if (cursor) cursor.style.display = 'none';
-                    setShowSocials(true);
-                  }).start();
-                }} />
+            {/* FOTO: Efek Abu-abu ke Warna & Slide dari Kiri */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50, filter: "grayscale(100%)" }}
+              whileInView={{ opacity: 1, x: 0, filter: "grayscale(0%)" }}
+              transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="w-40 h-40 md:w-52 md:h-52 rounded-full border-2 border-[#fbbf24] p-1 flex-shrink-0 mx-auto md:mx-0 overflow-hidden shadow-[0_0_20px_rgba(251,191,36,0.1)]"
+            >
+              <img 
+                src="/photo-portofolio.png" 
+                className="w-full h-full object-cover rounded-full" 
+                alt="Alif" 
+              />
+            </motion.div>
+
+            {/* TEKS: Slide dari Kanan & Terbagi jadi Paragraf */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="flex-1 space-y-6"
+            >
+              <div className="text-gray-300 text-sm md:text-base leading-relaxed text-justify space-y-4">
+                <p>
+                  Hello, my name is <strong>Muhammad Alif Haryanto</strong>, usually called Alif. I am 16 years old and currently an active student at Wirabuana Vocational High School (SMK), majoring in Software Engineering. I have a strong interest in information technology, especially software development, coding, and artificial intelligence (AI).
+                </p>
+                
+                <p>
+                  My interest in coding began when I was in 9th grade at Citayam Plus Junior High School. Even though programming was not part of the school curriculum, I started learning independently through articles, documentation, and various online resources. This experience strengthened my passion for technology and motivated me to continue my education in the Software Engineering field.
+                </p>
+
+                <p>
+                  During my studies, I have continued to develop my technical skills through school and personal exploration. I enjoy understanding how systems work, from program logic to real-world technology implementation. In my free time, I enjoy reading about AI and playing games like Valorant and Roblox.
+                </p>
+
+                <p className="text-[#fbbf24] font-medium italic">
+                  "Through this portfolio website, I aim to showcase my learning journey, projects, and skills, as well as take an early step toward building a career in technology."
+                </p>
               </div>
-              <AnimatePresence>
-                {showSocials && ( 
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pt-4 border-t border-white/5 flex gap-4">
-                    <SocialLink href="https://www.instagram.com/44mhmdaliff_/?utm_source=ig_web_button_share_sheet" icon={<FaInstagram />} />
-                    <SocialLink href="https://www.threads.com/@44mhmdaliff_" icon={<FaThreads />} />
-                    <SocialLink href="https://x.com/alifxfluxy" icon={<FaXTwitter />} />
-                    <SocialLink href="tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+
+              {/* SOCIAL MEDIA SECTION */}
+              <div className="pt-6 border-t border-white/10 space-y-4">
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                  className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-gray-500"
+                >
+                  Follow Social Media:
+                </motion.p>
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                  className="flex gap-4"
+                >
+                  <SocialLink href="https://www.instagram.com/44mhmdaliff_/?utm_source=ig_web_button_share_sheet" icon={<FaInstagram />} />
+                  <SocialLink href="https://www.threads.com/@44mhmdaliff_" icon={<FaThreads />} />
+                  <SocialLink href="https://x.com/alifxfluxy" icon={<FaXTwitter />} />
+                  <SocialLink href="https://tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 

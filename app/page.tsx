@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Particles = () => {
-  const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; duration: number; moveX: number; moveY: number }[]>([]);
+const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; duration: number; moveX: number; moveY: number }[]>([]);
 
   useEffect(() => {
     const newParticles = Array.from({ length: 40 }).map((_, i) => ({
