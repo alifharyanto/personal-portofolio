@@ -48,10 +48,10 @@ export default function ServicePage() {
             tags: ["OpenAI", "Automation"]
         },
         {
-            title: "Game Scripting",
-            desc: "Pengembangan logic sistem mekanik game yang efisien dan scalable di platform Roblox.",
+            title: "Game Development",
+            desc: "Membuat game dalam platform Roblox menggunakan bahasa pemograman Lua dan game yang menarik serta interaktif",
             icon: <FaGamepad />,
-            tags: ["Luau", "Roblox", "Logic"]
+            tags: ["Roblox Studio", "Roblox", "Lua Script"]
         },
         {
             title: "UI/UX Optimization",
@@ -63,8 +63,9 @@ export default function ServicePage() {
 
     const faqs = [
         { q: "Berapa lama durasi pengerjaan proyek?", a: "Tergantung kompleksitas. Landing page biasanya 3-7 hari, aplikasi sistem bisa 2-4 minggu." },
-        { q: "Apakah saya bisa melakukan revisi?", a: "Tentu. Saya menyediakan sesi revisi terstruktur untuk memastikan hasil sesuai kontrak kerja." },
-        { q: "Teknologi apa yang digunakan?", a: "Stack utama adalah Next.js (Frontend), Node.js (Backend), dan Python untuk keperluan AI." }
+        { q: "Apakah saya bisa melakukan revisi?", a: "Tentu. Saya menyediakan garansi revisi jika ada program yang BUG" },
+        { q: "Teknologi apa yang digunakan?", a: "Stack utama kami menggunakan native jika website, dan program lanjutan bisa menggunakan framework Next.JS(FullStack)" },
+        { q: "Berapa harga untuk pengembangan?", a: "Harga bervariasi sesuai dengan tingkat kesulitan pengerjaan. Untuk mengenai lebih lanjut bisa hubungi saya di contact."}
     ];
 
     const smoothTransition = { 
