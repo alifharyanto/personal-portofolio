@@ -160,7 +160,7 @@ const projects = [
         id: 6,
         title: "Wira Buana School (COMING SOON)",
         category: "Game Roblox",
-        image: "/img/wira buana school.png",
+        image: "/img/wira buana School.png",
         shortDesc: "Game Roblox Virtual World di Roblox",
         description: "Game Roblox Virtual world  di Roblox yang memungkinkan pemain untuk menjelajahi lingkungan Sekolah Wira Buana yang di dunia nyata, berinteraksi dengan pemain lain, dan pengalaman bermain roleplay di game tersebut.",
         tech: ["Roblox Engine", "Lua"],
