@@ -151,11 +151,17 @@ export default function AboutPage() {
             fpsLimit: 120,
             interactivity: {
               events: {
-                onHover: { enable: true, mode: "grab" },
+                onClick: { enable: true, mode: "push" }, // Nambah partikel saat klik
+                onHover: {
+                  enable: true,
+                  mode: "grab", // Garis akan menyambung ke cursor
+                  parallax: { enable: true, force: 60, smooth: 10 }
+                },
                 resize: { enable: true },
               },
               modes: {
-                grab: { distance: 140, links: { opacity: 0.5 } },
+                grab: { distance: 200, links: { opacity: 0.5 } },
+                push: { quantity: 4 },
               },
             },
             particles: {
@@ -165,22 +171,16 @@ export default function AboutPage() {
                 distance: 150,
                 enable: true,
                 opacity: 0.2,
-                width: 1,
+                width: 1
               },
               move: {
-                direction: "none",
                 enable: true,
-                outModes: { default: "bounce" },
-                random: false,
-                speed: 1,
-                straight: false,
+                speed: 1.2, // Sedikit dipercepat agar lebih terasa interaksinya
+                direction: "none",
+                outModes: { default: "bounce" }
               },
-              number: {
-                density: { enable: true },
-                value: 80,
-              },
+              number: { value: 80, density: { enable: true } }, // Menambah jumlah partikel
               opacity: { value: 0.3 },
-              shape: { type: "circle" },
               size: { value: { min: 1, max: 3 } },
             },
             detectRetina: true,
@@ -190,12 +190,12 @@ export default function AboutPage() {
 
       <div className="relative z-10 max-w-6xl mx-auto space-y-24 pb-10">
 
-{/* 1. SECTION: ABOUT ME */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8 }} 
-          viewport={{ once: true }} 
+        {/* 1. SECTION: ABOUT ME */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="bg-[#1e1e1f]/80 backdrop-blur-sm border border-[#383838] rounded-3xl p-8 md:p-12 shadow-2xl mx-4 md:mx-0"
         >
           <header className="flex items-center gap-4 mb-8">
@@ -205,22 +205,22 @@ export default function AboutPage() {
 
           <div className="flex flex-col md:flex-row gap-10 items-start">
             {/* FOTO: Efek Abu-abu ke Warna & Slide dari Kiri */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50, filter: "grayscale(100%)" }}
               whileInView={{ opacity: 1, x: 0, filter: "grayscale(0%)" }}
               transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
               className="w-40 h-40 md:w-52 md:h-52 rounded-full border-2 border-[#fbbf24] p-1 flex-shrink-0 mx-auto md:mx-0 overflow-hidden shadow-[0_0_20px_rgba(251,191,36,0.1)]"
             >
-              <img 
-                src="/photo-portofolio.png" 
-                className="w-full h-full object-cover rounded-full" 
-                alt="Alif" 
+              <img
+                src="/photo-portofolio.png"
+                className="w-full h-full object-cover rounded-full"
+                alt="Alif"
               />
             </motion.div>
 
             {/* TEKS: Slide dari Kanan & Terbagi jadi Paragraf */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -231,7 +231,7 @@ export default function AboutPage() {
                 <p>
                   Hello, my name is <strong>Muhammad Alif Haryanto</strong>, usually called Alif. I am 16 years old and currently an active student at Wirabuana Vocational High School (SMK), majoring in Software Engineering. I have a strong interest in information technology, especially software development, coding, and artificial intelligence (AI).
                 </p>
-                
+
                 <p>
                   My interest in coding began when I was in 9th grade at Citayam Plus Junior High School. Even though programming was not part of the school curriculum, I started learning independently through articles, documentation, and various online resources. This experience strengthened my passion for technology and motivated me to continue my education in the Software Engineering field.
                 </p>
@@ -247,7 +247,7 @@ export default function AboutPage() {
 
               {/* SOCIAL MEDIA SECTION */}
               <div className="pt-6 border-t border-white/10 space-y-4">
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 1 }}
@@ -255,8 +255,8 @@ export default function AboutPage() {
                 >
                   Follow Social Media:
                 </motion.p>
-                
-                <motion.div 
+
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 0.5 }}
@@ -437,7 +437,7 @@ export default function AboutPage() {
       </footer>
 
       {/* NAVBAR MOBILE */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+        <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
         <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
           {navItems.map((item) => {
             const isActive = pathname === item.path;
@@ -445,15 +445,16 @@ export default function AboutPage() {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-[#fbbf24] border-b-2 border-[#fbbf24]" : "text-gray-500"
-                  }`}
+                className={`text-[12px] font-black uppercase tracking-widest transition-all ${
+                  isActive ? "text-primary nav-underline" : "text-gray-500"
+                }`}
               >
                 {item.name}
               </Link>
             );
           })}
         </div>
-      </div>
+            </div>
 
       {/* MODAL SYSTEM */}
       <AnimatePresence>

@@ -78,28 +78,49 @@ export default function ServicePage() {
             
             {/* BACKGROUND PARTICLES SYSTEM */}
             {init && (
-                <Particles
-                    id="tsparticles"
-                    className="absolute inset-0 z-0"
-                    options={{
-                        background: { color: { value: "transparent" } },
-                        fpsLimit: 120,
-                        interactivity: {
-                            events: { onHover: { enable: true, mode: "grab" }, resize: { enable: true } },
-                            modes: { grab: { distance: 140, links: { opacity: 0.5 } } },
-                        },
-                        particles: {
-                            color: { value: "#fbbf24" },
-                            links: { color: "#fbbf24", distance: 150, enable: true, opacity: 0.2, width: 1 },
-                            move: { direction: "none", enable: true, outModes: { default: "bounce" }, random: false, speed: 1, straight: false },
-                            number: { density: { enable: true }, value: 80 },
-                            opacity: { value: 0.3 },
-                            shape: { type: "circle" },
-                            size: { value: { min: 1, max: 3 } },
-                        },
-                        detectRetina: true,
-                    }}
-                />
+<Particles
+    id="tsparticles"
+    className="absolute inset-0 z-0"
+    options={{
+        background: { color: { value: "transparent" } },
+        fpsLimit: 120,
+        interactivity: {
+            events: {
+                onClick: { enable: true, mode: "push" }, // Nambah partikel saat klik
+                onHover: { 
+                    enable: true, 
+                    mode: "grab", // Garis akan menyambung ke cursor
+                    parallax: { enable: true, force: 60, smooth: 10 } 
+                },
+                resize: { enable: true },
+            },
+            modes: {
+                grab: { distance: 200, links: { opacity: 0.5 } },
+                push: { quantity: 4 },
+            },
+        },
+        particles: {
+            color: { value: "#fbbf24" },
+            links: { 
+                color: "#fbbf24", 
+                distance: 150, 
+                enable: true, 
+                opacity: 0.2, 
+                width: 1 
+            },
+            move: { 
+                enable: true, 
+                speed: 1.2, // Sedikit dipercepat agar lebih terasa interaksinya
+                direction: "none",
+                outModes: { default: "bounce" } 
+            },
+            number: { value: 80, density: { enable: true } }, // Menambah jumlah partikel
+            opacity: { value: 0.3 },
+            size: { value: { min: 1, max: 3 } },
+        },
+        detectRetina: true,
+    }}
+/>
             )}
 
             <div className="relative z-10 max-w-6xl mx-auto space-y-24 pb-10 px-4">
@@ -307,7 +328,7 @@ export default function ServicePage() {
 
             {/* NAVBAR MOBILE */}
       {/* MOBILE FOOTER NAV: Navigasi bawah tetap aman */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+        <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
         <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
           {navItems.map((item) => {
             const isActive = pathname === item.path;

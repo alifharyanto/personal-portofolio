@@ -20,7 +20,8 @@ import {
     FaCode,
     FaCircleInfo,
     FaMagnifyingGlassPlus,
-    FaRobot
+    FaRobot, // Tanda koma diperbaiki di sini
+    FaCopyright
 } from "react-icons/fa6";
 
 import {
@@ -87,7 +88,7 @@ const projects = [
         image: "/img/portofolio.png",
         shortDesc: "Website Portofolio pribadi yang menampilkan karya dan informasi tentang saya.",
         description: "Website Portofolio pribadi yang dirancang untuk menampilkan karya, proyek, dan informasi tentang saya sebagai seorang pengembang perangkat lunak. Dibangun dengan Next.js dan Tailwind CSS untuk performa optimal dan desain responsif.",
-        tech: ["Next.js", "Tailwind CSS", "React", "TypeScript",],
+        tech: ["Next.js", "Tailwind CSS", "React", "TypeScript"],
         tags: ["Web Development", "Frontend", "UI/UX"],
         date: "Januari 2026",
         link: "/",
@@ -206,14 +207,42 @@ export default function ProjectPage() {
                     className="absolute inset-0 z-0"
                     options={{
                         background: { color: { value: "transparent" } },
+                        fpsLimit: 120,
+                        interactivity: {
+                            events: {
+                                onClick: { enable: true, mode: "push" }, // Nambah partikel saat klik
+                                onHover: {
+                                    enable: true,
+                                    mode: "grab", // Garis akan menyambung ke cursor
+                                    parallax: { enable: true, force: 60, smooth: 10 }
+                                },
+                                resize: { enable: true },
+                            },
+                            modes: {
+                                grab: { distance: 200, links: { opacity: 0.5 } },
+                                push: { quantity: 4 },
+                            },
+                        },
                         particles: {
                             color: { value: "#fbbf24" },
-                            links: { color: "#fbbf24", distance: 150, enable: true, opacity: 0.1, width: 1 },
-                            move: { enable: true, speed: 0.8 },
-                            number: { value: 50 },
-                            opacity: { value: 0.2 },
-                            size: { value: { min: 1, max: 2 } },
+                            links: {
+                                color: "#fbbf24",
+                                distance: 150,
+                                enable: true,
+                                opacity: 0.2,
+                                width: 1
+                            },
+                            move: {
+                                enable: true,
+                                speed: 1.2, // Sedikit dipercepat agar lebih terasa interaksinya
+                                direction: "none",
+                                outModes: { default: "bounce" }
+                            },
+                            number: { value: 80, density: { enable: true } }, // Menambah jumlah partikel
+                            opacity: { value: 0.3 },
+                            size: { value: { min: 1, max: 3 } },
                         },
+                        detectRetina: true,
                     }}
                 />
             )}
@@ -353,7 +382,6 @@ export default function ProjectPage() {
                                     </div>
 
                                     <div className="flex flex-row gap-3 pt-4">
-                                        {/* LOGIKA PERBAIKAN: LIVE DEMO PRIVATE CHECK */}
                                         {selectedProject.isPrivate ? (
                                             <div className="flex-[2] flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-gray-500 border border-white/5 rounded-xl font-black uppercase tracking-wider text-[10px] cursor-not-allowed">
                                                 <FaLock size={12} className="opacity-40" /> Private Project
@@ -364,7 +392,6 @@ export default function ProjectPage() {
                                             </a>
                                         )}
 
-                                        {/* SOURCE GITHUB PRIVATE CHECK */}
                                         {selectedProject.githubPrivate ? (
                                             <div className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-gray-500 border border-white/5 rounded-xl font-black uppercase tracking-wider text-[10px] cursor-not-allowed">
                                                 <FaLock size={12} className="opacity-40" /> Private
@@ -397,6 +424,21 @@ export default function ProjectPage() {
                 )}
             </AnimatePresence>
 
+
+            {/* COPYRIGHT MOBILE */}
+            <div className="md:hidden flex flex-col items-center text-center pt-10 pb-24 space-y-3">
+                <div className="flex items-center gap-2 text-white/50">
+                    <FaCopyright size={16} />
+                    <span className="text-sm font-black uppercase tracking-[0.2em]">Copyright</span>
+                </div>
+                <div className="flex items-center gap-3 w-full justify-center px-10">
+                    <div className="h-[1px] flex-1 bg-[#fbbf24]" />
+                    <p className="text-[#fbbf24] text-sm font-bold tracking-widest whitespace-nowrap uppercase">Muhammad Alif Haryanto</p>
+                    <div className="h-[1px] flex-1 bg-[#fbbf24]" />
+                </div>
+                <p className="text-white/30 text-sm font-black">2026</p>
+            </div>
+
             {/* FOOTER DESKTOP */}
             <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10 mt-20">
                 <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
@@ -409,7 +451,7 @@ export default function ProjectPage() {
                             </div>
                         </div>
                         <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
-                            Creating programs is not just a job, but also an art that has aesthetic value. Let's build something amazing.
+                            Creating programs is not just a job, but also an art that has aesthetic value. Let&apos;s build something amazing.
                         </p>
                         <div className="flex gap-4 pt-2">
                             <SocialLink href="https://www.instagram.com/44mhmdaliff_/" icon={<FaInstagram />} />
@@ -442,22 +484,23 @@ export default function ProjectPage() {
             </footer>
 
             {/* MOBILE BOTTOM NAVBAR */}
-            <div className="md:hidden fixed bottom-0 left-0 w-full z-40">
-                <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4 bg-black/20 border-t border-white/5">
-                    {navItems.map((item) => {
-                        const isActive = pathname === item.path;
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.path}
-                                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-[#fbbf24] border-b-2 border-[#fbbf24] pb-1" : "text-gray-500"
-                                    }`}
-                            >
-                                {item.name}
-                            </Link>
-                        );
-                    })}
-                </div>
+        <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+        <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
+          {navItems.map((item) => {
+            const isActive = pathname === item.path;
+            return (
+              <Link
+                key={item.name}
+                href={item.path}
+                className={`text-[12px] font-black uppercase tracking-widest transition-all ${
+                  isActive ? "text-primary nav-underline" : "text-gray-500"
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+        </div>
             </div>
 
         </section>
