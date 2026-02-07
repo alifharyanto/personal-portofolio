@@ -11,62 +11,171 @@ import {
     FaXmark,
     FaInstagram,
     FaTiktok,
-    FaCopyright,
     FaChevronRight,
     FaEnvelope,
     FaWhatsapp,
-    FaLayerGroup,
     FaCalendarDays,
     FaLock,
-    FaXTwitter // <--- SUDAH DITAMBAHKAN BIAR GAK ERROR
+    FaXTwitter,
+    FaCode,
+    FaCircleInfo,
+    FaMagnifyingGlassPlus,
+    FaRobot
 } from "react-icons/fa6";
+
+import {
+    SiNextdotjs,
+    SiTailwindcss,
+    SiStripe,
+    SiPrisma,
+    SiPython,
+    SiReact,
+    SiFastapi,
+    SiOpenai,
+    SiRoblox,
+    SiLua,
+    SiHtml5,
+    SiCss3,
+    SiJavascript,
+    SiTypescript,
+    SiPhp,
+    SiBootstrap,
+    SiFlask,
+    SiDjango,
+    SiScikitlearn,
+    SiGoogle,
+    SiGooglegemini
+} from "react-icons/si";
+
+// --- HELPER UNTUK ICON TECH ---
+const getTechIcon = (name: string) => {
+    switch (name) {
+        case "Next.js": return <SiNextdotjs />;
+        case "Tailwind CSS": return <SiTailwindcss />;
+        case "Stripe": return <SiStripe />;
+        case "Prisma": return <SiPrisma />;
+        case "FastAPI": return <SiFastapi />;
+        case "OpenAI": return <SiOpenai />;
+        case "AI": return <FaRobot />;
+        case "Google": return <SiGoogle />;
+        case "Google Gemini": return <SiGooglegemini />;
+        case "Roblox Engine": return <SiRoblox />;
+        case "Bootstrap": return <SiBootstrap />;
+        case "Flask": return <SiFlask />;
+        case "Django": return <SiDjango />;
+        case "Scikit-learn": return <SiScikitlearn />;
+        case "MediaPipe": return <SiGoogle />;
+        case "HTML": return <SiHtml5 />;
+        case "CSS": return <SiCss3 />;
+        case "JavaScript": return <SiJavascript />;
+        case "TypeScript": return <SiTypescript />;
+        case "PHP": return <SiPhp />;
+        case "Python": return <SiPython />;
+        case "React": return <SiReact />;
+        case "Luau":
+        case "Lua": return <SiLua />;
+        default: return <FaCode />;
+    }
+};
 
 // --- DATA PROJECTS ---
 const projects = [
     {
         id: 1,
-        title: "E-Commerce Luxury",
+        title: "Portofolio",
         category: "Web Development",
-        image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1632&auto=format&fit=crop",
-        shortDesc: "Platform belanja online modern dengan fitur payment gateway terintegrasi.",
-        description: "Proyek ini adalah platform e-commerce skala penuh yang dibangun untuk bisnis fashion mewah. Memiliki fitur manajemen stok, keranjang belanja real-time, dan sistem pembayaran otomatis.",
-        tech: ["Next.js", "Tailwind CSS", "Stripe", "Prisma"],
+        image: "/img/portofolio.png",
+        shortDesc: "Website Portofolio pribadi yang menampilkan karya dan informasi tentang saya.",
+        description: "Website Portofolio pribadi yang dirancang untuk menampilkan karya, proyek, dan informasi tentang saya sebagai seorang pengembang perangkat lunak. Dibangun dengan Next.js dan Tailwind CSS untuk performa optimal dan desain responsif.",
+        tech: ["Next.js", "Tailwind CSS", "React", "TypeScript",],
+        tags: ["Web Development", "Frontend", "UI/UX"],
         date: "Januari 2026",
-        link: "https://example.com",
+        link: "/",
         github: "https://github.com",
-        isPrivate: true // <--- Mode Private Aktif
+        isPrivate: false,
+        githubPrivate: true
     },
     {
         id: 2,
-        title: "AI Image Generator",
+        title: "FX Intelligence",
         category: "AI Integration",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1632&auto=format&fit=crop",
-        shortDesc: "Aplikasi pengolah gambar berbasis AI menggunakan API Stable Diffusion.",
-        description: "Aplikasi ini memungkinkan pengguna menghasilkan gambar berkualitas tinggi hanya dengan perintah teks (prompt). Menggunakan integrasi API OpenAI.",
-        tech: ["Python", "React", "FastAPI", "OpenAI"],
-        date: "Desember 2025",
-        link: "https://example.com",
+        image: "/img/fx intelligence.png",
+        shortDesc: "Website Chatbot AI dengan model AI Google Gemini flash2.5 dan pollinations ai sebagai image generator.",
+        description: "Website Chatbot AI yang mengintegrasikan model AI Google Gemini flash2.5 untuk interaksi percakapan alamai dan pollinations ai sebagai image genarator. Memmberikan pengalaman interaktif dan visual yang menarik bagi pengguna.",
+        tech: ["HTML", "CSS", "JavaScript", "Google Gemini"],
+        tags: ["AI Integration", "FrontEnd", "Web Development", "API Integration"],
+        date: "12 Oktober 2025",
+        link: "https://fxintelligencebetatest.netlify.app/",
         github: "https://github.com",
-        isPrivate: false
+        isPrivate: false,
+        githubPrivate: true
     },
     {
         id: 3,
-        title: "Roblox Combat System",
-        category: "Game Scripting",
-        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1470&auto=format&fit=crop",
-        shortDesc: "Script sistem pertarungan tingkat lanjut untuk game bergenre RPG di Roblox.",
-        description: "Mengembangkan kerangka kerja (framework) untuk sistem pertarungan yang mencakup combo hit dan sinkronisasi data server-client.",
-        tech: ["Luau", "Roblox Engine"],
-        date: "November 2025",
-        link: "#",
+        title: "FX Music",
+        category: "Website Music Player",
+        image: "/img/fx music -img.png",
+        shortDesc: "Website Music Player dengan fitur kontrol pemutaran lengkap dan desain responsif.",
+        description: "Website Music Player yang memungkinkan pengguna untuk memutar, menghentikan, dan mengontrol musik dengan antarmuka yang intuitif dan desain responsif.",
+        tech: ["HTML", "CSS", "JavaScript"],
+        tags: ["Music Player", "Web Development", "Frontend"],
+        date: "1 April 2025",
+        link: "https://fxecosystemfxmucic.netlify.app/",
         github: "#",
-        isPrivate: false
+        isPrivate: false,
+        githubPrivate: true
+    },
+    {
+        id: 4,
+        title: "FX Code",
+        category: "Code Editor Web",
+        image: "/img/fx code.png",
+        shortDesc: "Website Editor Web dengan fitur kontrol lengkap dan sederhana",
+        description: "Website Editor Web yang memungkinkan pengguna untuk mengedit kode dengan antarmuka yang intuitif dan desain responsif.",
+        tech: ["HTML", "CSS", "JavaScript"],
+        tags: ["Code Editor", "Web Development", "Frontend"],
+        date: "1 April 2025",
+        link: "https://fxcodefordeveloper.netlify.app/",
+        github: "#",
+        isPrivate: false,
+        githubPrivate: true
+    },
+    {
+        id: 5,
+        title: "Citayam School CP & PW",
+        category: "Game Roblox",
+        image: "/img/citayam cp.png",
+        shortDesc: "Game Roblox Virtual World di Roblox",
+        description: "Game Roblox Virtual world  di Roblox yang memungkinkan pemain untuk menjelajahi lingkungan Citayam School, berinteraksi dengan pemain lain, dan pengalaman gedung sekolah yang di dunia nyata.",
+        tech: ["Roblox Engine", "Lua"],
+        tags: ["Game Development", "Roblox", "Lua"],
+        date: "27 Juni 2025",
+        link: "https://www.roblox.com/id/games/87998813686395/Citayam-Plus-Pariwisata-School",
+        github: "#",
+        isPrivate: false,
+        githubPrivate: true
+    },
+    {
+        id: 6,
+        title: "Wira Buana School (COMING SOON)",
+        category: "Game Roblox",
+        image: "/img/wira buana school.png",
+        shortDesc: "Game Roblox Virtual World di Roblox",
+        description: "Game Roblox Virtual world  di Roblox yang memungkinkan pemain untuk menjelajahi lingkungan Sekolah Wira Buana yang di dunia nyata, berinteraksi dengan pemain lain, dan pengalaman bermain roleplay di game tersebut.",
+        tech: ["Roblox Engine", "Lua"],
+        tags: ["Game Development", "Roblox", "Lua"],
+        date: "01 Juli 2025",
+        link: "https://www.roblox.com/id/games/125110927083926/Sekolah-Wira-Buana",
+        github: "#",
+        isPrivate: false,
+        githubPrivate: true
     }
 ];
 
 export default function ProjectPage() {
     const [init, setInit] = useState(false);
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+    const [zoomImage, setZoomImage] = useState<string | null>(null);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -127,7 +236,7 @@ export default function ProjectPage() {
                 </motion.header>
 
                 {/* PROJECT GRID */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -135,10 +244,11 @@ export default function ProjectPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ ...smoothTransition, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group bg-[#1e1e1f] rounded-3xl overflow-hidden border border-[#383838] hover:border-[#fbbf24]/50 transition-all duration-500 shadow-2xl"
+                            className="group bg-[#1e1e1f] rounded-3xl overflow-hidden border border-[#383838] hover:border-[#fbbf24]/50 transition-all duration-500 shadow-2xl flex flex-col"
                         >
+                            {/* IMAGE */}
                             <div className="relative aspect-video overflow-hidden">
-                                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2 opacity-80" />
+                                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent opacity-60" />
                                 <div className="absolute top-4 left-4">
                                     <span className="px-3 py-1 bg-[#fbbf24] text-black text-[10px] font-black uppercase tracking-widest rounded-lg italic">
@@ -147,9 +257,34 @@ export default function ProjectPage() {
                                 </div>
                             </div>
 
-                            <div className="p-6 space-y-4">
-                                <h3 className="text-xl font-bold text-white uppercase tracking-tighter group-hover:text-[#fbbf24] transition-colors">{project.title}</h3>
-                                <p className="text-gray-400 text-xs leading-relaxed line-clamp-2 italic">{project.shortDesc}</p>
+                            {/* CONTENT */}
+                            <div className="p-6 flex flex-col flex-grow">
+                                <h3 className="text-xl font-bold text-white uppercase tracking-tighter group-hover:text-[#fbbf24] transition-colors mb-3">{project.title}</h3>
+                                <p className="text-gray-400 text-xs leading-relaxed line-clamp-2 italic mb-auto">{project.shortDesc}</p>
+
+                                <div className="mt-6">
+                                    <div className="w-full h-[1px] bg-[#383838] group-hover:bg-[#fbbf24]/30 transition-colors duration-500 mb-4" />
+
+                                    {/* Tech Stack Icons */}
+                                    <div className="flex flex-wrap gap-2 mb-3">
+                                        {project.tech.map((t, i) => (
+                                            <div key={i} className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+                                                <span className="text-[#fbbf24] text-[10px]">{getTechIcon(t)}</span>
+                                                <span className="text-[9px] font-bold uppercase tracking-wider text-gray-300">{t}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Tags */}
+                                    <div className="flex flex-wrap gap-2 mb-6">
+                                        {project.tags.map((tag, i) => (
+                                            <span key={i} className="px-3 py-1.5 rounded-full bg-[#fbbf24]/5 border border-[#fbbf24]/20 text-[#fbbf24] text-[9px] font-black uppercase tracking-widest italic group-hover:bg-[#fbbf24]/10 transition-colors duration-300">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
                                 <button onClick={() => setSelectedProject(project)} className="w-full py-3 rounded-xl border border-[#fbbf24]/20 text-[#fbbf24] text-[11px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#fbbf24] hover:text-black transition-all duration-300 active:scale-95">
                                     View Details <FaChevronRight size={10} />
                                 </button>
@@ -159,74 +294,87 @@ export default function ProjectPage() {
                 </div>
             </div>
 
-            {/* MODAL DETAIL - FIXED SLIM BUTTONS */}
+            {/* MODAL DETAIL */}
             <AnimatePresence>
                 {selectedProject && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/95 backdrop-blur-md" />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-black/60 backdrop-blur-xl" />
 
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-4xl bg-[#1e1e1f] border border-[#383838] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] max-h-[90vh] overflow-y-auto custom-scrollbar"
+                            className="relative w-full max-w-4xl bg-[#1e1e1f] border border-[#383838] rounded-[2rem] overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar"
                         >
-                            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-[#fbbf24] hover:text-black transition-all">
+                            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-[#fbbf24] hover:text-black transition-all">
                                 <FaXmark size={18} />
                             </button>
 
                             <div className="grid grid-cols-1 lg:grid-cols-2">
-                                <div className="relative h-56 lg:h-full min-h-[250px]">
+                                <div className="relative h-64 lg:h-full min-h-[300px] group cursor-zoom-in" onClick={() => setZoomImage(selectedProject.image)}>
                                     <img src={selectedProject.image} className="w-full h-full object-cover" alt="" />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all" />
+                                    <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-2 rounded-lg text-white text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                                        <FaMagnifyingGlassPlus className="text-[#fbbf24]" /> Click to Zoom
+                                    </div>
                                 </div>
 
-                                <div className="p-6 md:p-12 space-y-6 md:space-y-8">
+                                <div className="p-8 md:p-12 space-y-6">
                                     <div className="space-y-2">
-                                        <div className="flex items-center gap-2 text-[#fbbf24] text-[9px] md:text-[10px] font-black uppercase tracking-widest">
-                                            <FaLayerGroup /> {selectedProject.category}
+                                        <div className="flex items-center gap-2 text-[#fbbf24] text-[10px] font-black uppercase tracking-widest">
+                                            <FaCircleInfo /> {selectedProject.category}
                                         </div>
-                                        <h2 className="text-2xl md:text-4xl font-black text-white uppercase italic tracking-tighter leading-tight">{selectedProject.title}</h2>
-                                        <div className="flex items-center gap-2 text-gray-500 text-[10px] md:text-xs">
+                                        <h2 className="text-3xl md:text-4xl font-black text-white uppercase italic tracking-tighter leading-tight">{selectedProject.title}</h2>
+                                        <div className="flex items-center gap-2 text-gray-500 text-xs">
                                             <FaCalendarDays className="text-[#fbbf24]/50" /> {selectedProject.date}
                                         </div>
                                     </div>
 
                                     <div className="space-y-3">
                                         <h4 className="text-white font-bold uppercase text-[10px] tracking-widest border-l-2 border-[#fbbf24] pl-3">Overview</h4>
-                                        <p className="text-gray-400 text-xs md:text-sm leading-relaxed italic">{selectedProject.description}</p>
+                                        <p className="text-gray-400 text-sm leading-relaxed italic">{selectedProject.description}</p>
                                     </div>
 
-                                    {/* --- BAGIAN TOMBOL YG DIPERBAIKI (SLIM & RESPONSIVE) --- */}
-                                    <div className="flex flex-row gap-2 pt-2">
+                                    <div className="space-y-4">
+                                        <div className="flex flex-wrap gap-2">
+                                            {selectedProject.tech.map((t, i) => (
+                                                <span key={i} className="px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 text-[9px] text-gray-300 font-bold uppercase tracking-wider flex items-center gap-2">
+                                                    <span className="text-[#fbbf24]">{getTechIcon(t)}</span> {t}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <div className="flex flex-wrap gap-2">
+                                            {selectedProject.tags.map((tag, i) => (
+                                                <span key={i} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-[#fbbf24]/60 text-[9px] font-bold uppercase tracking-widest italic">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-row gap-3 pt-4">
+                                        {/* LOGIKA PERBAIKAN: LIVE DEMO PRIVATE CHECK */}
                                         {selectedProject.isPrivate ? (
-                                            /* BUTTON PRIVATE: Lebih ramping, warna redup, gembok */
-                                            <div className="flex-[2] flex items-center justify-center gap-1.5 px-3 py-2.5 bg-white/5 text-gray-500 rounded-xl border border-white/5 cursor-not-allowed">
-                                                <FaLock size={10} className="opacity-50" />
-                                                <span className="text-[9px] font-black uppercase tracking-wider whitespace-nowrap">Private Access</span>
+                                            <div className="flex-[2] flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-gray-500 border border-white/5 rounded-xl font-black uppercase tracking-wider text-[10px] cursor-not-allowed">
+                                                <FaLock size={12} className="opacity-40" /> Private Project
                                             </div>
                                         ) : (
-                                            /* BUTTON LIVE: Slim, sebaris */
-                                            <a
-                                                href={selectedProject.link}
-                                                target="_blank"
-                                                className="flex-[2] flex items-center justify-center gap-1.5 px-3 py-2.5 bg-[#fbbf24] text-black rounded-xl font-black uppercase tracking-wider text-[9px] hover:shadow-[0_0_15px_rgba(251,191,36,0.3)] transition-all active:scale-95 whitespace-nowrap"
-                                            >
-                                                Live Demo <FaArrowUpRightFromSquare size={10} />
+                                            <a href={selectedProject.link} target="_blank" className="flex-[2] flex items-center justify-center gap-2 px-4 py-3 bg-[#fbbf24] text-black rounded-xl font-black uppercase tracking-wider text-[10px] hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all active:scale-95">
+                                                Link Project <FaArrowUpRightFromSquare size={12} />
                                             </a>
                                         )}
 
-                                      
-                                        <a
-                                            href={selectedProject.github}
-                                            target="_blank"
-                                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 bg-white/5 text-white border border-white/10 rounded-xl font-black uppercase tracking-wider text-[9px] hover:bg-white/10 transition-all active:scale-95"
-                                        >
-                                            Source <FaGithub size={12} />
-                                        </a>
+                                        {/* SOURCE GITHUB PRIVATE CHECK */}
+                                        {selectedProject.githubPrivate ? (
+                                            <div className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-gray-500 border border-white/5 rounded-xl font-black uppercase tracking-wider text-[10px] cursor-not-allowed">
+                                                <FaLock size={12} className="opacity-40" /> Private
+                                            </div>
+                                        ) : (
+                                            <a href={selectedProject.github} target="_blank" className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white border border-white/10 rounded-xl font-black uppercase tracking-wider text-[10px] hover:bg-white/10 transition-all active:scale-95">
+                                                Source <FaGithub size={14} />
+                                            </a>
+                                        )}
                                     </div>
-                                    {/* ------------------------------------------------------- */}
-
                                 </div>
                             </div>
                         </motion.div>
@@ -234,22 +382,23 @@ export default function ProjectPage() {
                 )}
             </AnimatePresence>
 
-            {/* COPYRIGHT MOBILE */}
-            <div className="md:hidden flex flex-col items-center text-center pt-5 pb-24 space-y-3">
-                <div className="flex items-center gap-2 text-white/50">
-                    <FaCopyright size={16} />
-                    <span className="text-sm font-black uppercase tracking-[0.2em]">Copyright</span>
-                </div>
-                <div className="flex items-center gap-3 w-full justify-center px-10">
-                    <div className="h-[1px] flex-1 bg-[#fbbf24]" />
-                    <p className="text-[#fbbf24] text-sm font-bold tracking-widest whitespace-nowrap uppercase">Muhammad Alif Haryanto</p>
-                    <div className="h-[1px] flex-1 bg-[#fbbf24]" />
-                </div>
-                <p className="text-white/30 text-sm font-black">2026</p>
-            </div>
+            {/* FULLSCREEN IMAGE ZOOM */}
+            <AnimatePresence>
+                {zoomImage && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[110] flex items-center justify-center p-4 md:p-12">
+                        <div className="absolute inset-0 bg-[#121212]/40 backdrop-blur-2xl" onClick={() => setZoomImage(null)} />
+                        <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }} className="relative max-w-7xl w-full h-full flex items-center justify-center z-20">
+                            <img src={zoomImage} className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl" alt="Fullscreen zoom" />
+                            <button onClick={() => setZoomImage(null)} className="absolute top-0 -right-2 md:-top-10 md:-right-10 w-12 h-12 bg-[#fbbf24] text-black rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+                                <FaXmark size={24} />
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* FOOTER DESKTOP */}
-            <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10">
+            <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10 mt-20">
                 <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
                     <div className="col-span-2 space-y-6">
                         <div className="flex items-center gap-4">
@@ -268,7 +417,6 @@ export default function ProjectPage() {
                             <SocialLink href="https://tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
                         </div>
                     </div>
-
                     <div className="space-y-6">
                         <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Shortcuts</h4>
                         <div className="flex flex-col gap-3">
@@ -279,7 +427,6 @@ export default function ProjectPage() {
                             ))}
                         </div>
                     </div>
-
                     <div className="space-y-6">
                         <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
                         <div className="space-y-3">
@@ -289,23 +436,21 @@ export default function ProjectPage() {
                         </div>
                     </div>
                 </div>
-
                 <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center opacity-40">
                     <p className="text-[10px] text-white font-bold uppercase tracking-widest">© 2026 Muhammad Alif Haryanto • All Rights Reserved</p>
-                    <p className="text-[10px] text-white font-bold uppercase tracking-widest italic tracking-tighter">Handcrafted with Style</p>
                 </div>
             </footer>
 
-            {/* NAVBAR MOBILE */}
-            <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
-                <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4 border-t border-white/10">
+            {/* MOBILE BOTTOM NAVBAR */}
+            <div className="md:hidden fixed bottom-0 left-0 w-full z-40">
+                <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4 bg-black/20 border-t border-white/5">
                     {navItems.map((item) => {
                         const isActive = pathname === item.path;
                         return (
                             <Link
                                 key={item.name}
                                 href={item.path}
-                                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-[#fbbf24] border-b-2 border-[#fbbf24]" : "text-gray-500"
+                                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-[#fbbf24] border-b-2 border-[#fbbf24] pb-1" : "text-gray-500"
                                     }`}
                             >
                                 {item.name}
@@ -314,6 +459,7 @@ export default function ProjectPage() {
                     })}
                 </div>
             </div>
+
         </section>
     );
 }
