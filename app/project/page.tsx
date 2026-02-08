@@ -22,7 +22,8 @@ import {
     FaMagnifyingGlassPlus,
     FaRobot, // Tanda koma diperbaiki di sini
     FaCopyright,
-    FaThreads
+    FaThreads,
+    FaDatabase
 } from "react-icons/fa6";
 
 import {
@@ -76,6 +77,7 @@ const getTechIcon = (name: string) => {
         case "React": return <SiReact />;
         case "Luau":
         case "Lua": return <SiLua />;
+        case "SQL": return <FaDatabase />;
         default: return <FaCode />;
     }
 };
@@ -89,8 +91,8 @@ const projects = [
         image: "/img/portofolio.png",
         shortDesc: "Website Portofolio pribadi yang menampilkan karya dan informasi tentang saya.",
         description: "Website Portofolio pribadi yang dirancang untuk menampilkan karya, proyek, dan informasi tentang saya sebagai seorang pengembang perangkat lunak. Dibangun dengan Next.js dan Tailwind CSS untuk performa optimal dan desain responsif.",
-        tech: ["Next.js", "Tailwind CSS", "React", "TypeScript"],
-        tags: ["Web Development", "Frontend", "UI/UX"],
+        tech: ["Next.js", "Tailwind CSS", "React", "TypeScript", "SQL"],
+        tags: ["Web Development", "Frontend", "Backend", "UI/UX"],
         date: "Januari 2026",
         link: "/",
         github: "https://github.com",
