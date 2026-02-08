@@ -21,7 +21,8 @@ import {
     FaCircleInfo,
     FaMagnifyingGlassPlus,
     FaRobot, // Tanda koma diperbaiki di sini
-    FaCopyright
+    FaCopyright,
+    FaThreads
 } from "react-icons/fa6";
 
 import {
@@ -260,7 +261,7 @@ export default function ProjectPage() {
                     </h1>
                     <div className="h-[2px] w-24 bg-[#fbbf24] mx-auto" />
                     <p className="text-gray-400 max-w-lg mx-auto text-sm md:text-base italic px-4">
-                        Kumpulan karya digital pilihan yang dibangun dengan fokus pada kualitas dan inovasi.
+                        Kumpulan karya digital yang saya bangun dengan dedikasi dan passion dalam dunia pengembangan perangkat lunak serta teknologi terkini.
                     </p>
                 </motion.header>
 
@@ -440,25 +441,27 @@ export default function ProjectPage() {
             </div>
 
             {/* FOOTER DESKTOP */}
-            <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10 mt-20">
+            <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10">
                 <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
                     <div className="col-span-2 space-y-6">
                         <div className="flex items-center gap-4">
-                            <img src="/photo-portofolio.png" className="w-14 h-14 rounded-full border border-[#fbbf24] object-cover" alt="Profile" />
+                            <img src="/photo-portofolio.png" className="w-14 h-14 rounded-full border border-[#fbbf24] object-cover" />
                             <div>
                                 <h3 className="text-white font-bold text-xl uppercase italic">Muhammad Alif</h3>
                                 <p className="text-gray-500 text-xs font-medium">Software Engineering Student</p>
                             </div>
                         </div>
                         <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
-                            Creating programs is not just a job, but also an art that has aesthetic value. Let&apos;s build something amazing.
+                            Creating programs is not just a job, but also an art that has aesthetic value. Let's build something amazing.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            <SocialLink href="https://www.instagram.com/44mhmdaliff_/" icon={<FaInstagram />} />
+                            <SocialLink href="https://www.instagram.com/44mhmdaliff_/?utm_source=ig_web_button_share_sheet" icon={<FaInstagram />} />
+                            <SocialLink href="https://www.threads.com/@44mhmdaliff_" icon={<FaThreads />} />
                             <SocialLink href="https://x.com/alifxfluxy" icon={<FaXTwitter />} />
                             <SocialLink href="https://tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
                         </div>
                     </div>
+
                     <div className="space-y-6">
                         <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Shortcuts</h4>
                         <div className="flex flex-col gap-3">
@@ -469,38 +472,66 @@ export default function ProjectPage() {
                             ))}
                         </div>
                     </div>
+
                     <div className="space-y-6">
                         <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
                         <div className="space-y-3">
-                            <ContactItem icon={<FaEnvelope />} label="Email Me" value="alifharyanto201012@gmail.com" href="mailto:alifharyanto201012@gmail.com" />
-                            <ContactItem icon={<FaWhatsapp />} label="WhatsApp" value="+62 895-4042-09300" href="https://wa.me/62895404209300" />
-                            <ContactItem icon={<FaGithub />} label="GitHub" value="alifharyanto" href="https://github.com/alifharyanto" />
+                            <a href="mailto:alifharyanto.depok@gmail.com" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+                                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
+                                    <FaEnvelope size={14} />
+                                </div>
+                                <div className="overflow-hidden">
+                                    <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">Email Me</p>
+                                    <p className="text-white text-[11px] font-bold truncate">alifharyanto.depok@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/62895404209300" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+                                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
+                                    <FaWhatsapp size={14} />
+                                </div>
+                                <div className="overflow-hidden">
+                                    <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">WhatsApp</p>
+                                    <p className="text-white text-[11px] font-bold truncate">+62 895-4042-09300</p>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/alifharyanto" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+                                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
+                                    <FaGithub size={14} />
+                                </div>
+                                <div className="overflow-hidden">
+                                    <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">GitHub</p>
+                                    <p className="text-white text-[11px] font-bold truncate">alifharyanto</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+
                 <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center opacity-40">
                     <p className="text-[10px] text-white font-bold uppercase tracking-widest">© 2026 Muhammad Alif Haryanto • All Rights Reserved</p>
+                    <p className="text-[10px] text-white font-bold uppercase tracking-widest italic tracking-tighter">Handcrafted with Style</p>
                 </div>
             </footer>
 
             {/* MOBILE BOTTOM NAVBAR */}
-        <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
-        <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
-          {navItems.map((item) => {
-            const isActive = pathname === item.path;
-            return (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`text-[12px] font-black uppercase tracking-widest transition-all ${
-                  isActive ? "text-primary nav-underline" : "text-gray-500"
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </div>
+            <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+                <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
+                    {navItems.map((item) => {
+                        const isActive = pathname === item.path;
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.path}
+                                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-primary nav-underline" : "text-gray-500"
+                                    }`}
+                            >
+                                {item.name}
+                            </Link>
+                        );
+                    })}
+                </div>
             </div>
 
         </section>

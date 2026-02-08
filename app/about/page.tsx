@@ -397,13 +397,13 @@ export default function AboutPage() {
           <div className="space-y-6">
             <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
             <div className="space-y-3">
-              <a href="mailto:alifharyanto201012@gmail.com" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+              <a href="mailto:alifharyanto.depok@gmail.com" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
                 <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
                   <FaEnvelope size={14} />
                 </div>
                 <div className="overflow-hidden">
                   <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">Email Me</p>
-                  <p className="text-white text-[11px] font-bold truncate">alifharyanto201012@gmail.com</p>
+                  <p className="text-white text-[11px] font-bold truncate">alifharyanto.depok@gmail.com</p>
                 </div>
               </a>
 

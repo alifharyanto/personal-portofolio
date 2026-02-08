@@ -57,7 +57,7 @@ export default function HistoryPage() {
         initParticlesEngine(async (engine) => {
             await loadSlim(engine);
         }).then(() => setInit(true));
-        
+
         if (auth === "true") fetchMessages();
     }, []);
 
@@ -111,7 +111,7 @@ export default function HistoryPage() {
     if (!isAuthorized) {
         return (
             <div className="fixed inset-0 z-[9999] bg-[#121212] flex items-center justify-center px-6">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="w-full max-w-md bg-[#1e1e1f] border border-white/5 p-10 rounded-[3rem] shadow-2xl text-center"
@@ -121,10 +121,10 @@ export default function HistoryPage() {
                     </div>
                     <h2 className="text-white text-2xl font-black uppercase italic tracking-tighter mb-2">Restricted Access</h2>
                     <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.2em] mb-8">Verification Required</p>
-                    
+
                     <form onSubmit={handleLogin} className="space-y-4">
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             value={passwordInput}
                             onChange={(e) => setPasswordInput(e.target.value)}
                             placeholder="Enter Password"
@@ -270,7 +270,6 @@ export default function HistoryPage() {
                 <p className="text-white/30 text-sm font-black">2026</p>
             </div>
 
-            {/* FOOTER */}
             <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10">
                 <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
                     <div className="col-span-2 space-y-6">
@@ -304,35 +303,38 @@ export default function HistoryPage() {
 
                     <div className="space-y-6">
                         <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                             <ContactItem icon={<FaEnvelope />} label="Email Me" value="alifharyanto201012@gmail.com" href="mailto:alifharyanto201012@gmail.com" />
                             <ContactItem icon={<FaWhatsapp />} label="WhatsApp" value="+62 895-4042-09300" href="https://wa.me/62895404209300" />
                             <ContactItem icon={<FaGithub />} label="GitHub" value="alifharyanto" href="https://github.com/alifharyanto" />
                         </div>
                     </div>
                 </div>
+
+                <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center opacity-40">
+                    <p className="text-[10px] text-white font-bold uppercase tracking-widest">© 2026 Muhammad Alif Haryanto • All Rights Reserved</p>
+                    <p className="text-[10px] text-white font-bold uppercase tracking-widest italic tracking-tighter">Handcrafted with Style</p>
+                </div>
             </footer>
 
-      {/* NAVBAR MOBILE */}
-        <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
-        <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
-          {navItems.map((item) => {
-            const isActive = pathname === item.path;
-            return (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`text-[12px] font-black uppercase tracking-widest transition-all ${
-                  isActive ? "text-primary nav-underline" : "text-gray-500"
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </div>
+            {/* NAVBAR MOBILE */}
+            <div className="md:hidden fixed bottom-0 left-0 w-full z-50">
+                <div className="nav-glass flex justify-around backdrop-blur-md items-center h-20 px-4">
+                    {navItems.map((item) => {
+                        const isActive = pathname === item.path;
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.path}
+                                className={`text-[12px] font-black uppercase tracking-widest transition-all ${isActive ? "text-primary nav-underline" : "text-gray-500"
+                                    }`}
+                            >
+                                {item.name}
+                            </Link>
+                        );
+                    })}
+                </div>
             </div>
-
         </section>
     );
 }

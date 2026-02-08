@@ -8,7 +8,7 @@ import { loadSlim } from "@tsparticles/slim";
 import {
     FaInstagram, FaTiktok, FaCopyright, FaChevronRight,
     FaEnvelope, FaWhatsapp, FaGithub, FaXTwitter,
-    FaPaperPlane, FaLocationDot
+    FaPaperPlane, FaLocationDot, FaThreads
 } from "react-icons/fa6";
 
 export default function ContactPage() {
@@ -149,7 +149,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         <div className="h-[2px] w-24 bg-[#fbbf24] mx-auto" />
                     </div>
                     <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed italic px-4">
-                        Punya proyek menarik? Mari berdiskusi dan buat sesuatu yang luar biasa bersama.
+                        Punya proyek menariK? Atau ingin bertanya lebih Lanjut? Jangan ragu untuk menghubungi saya melalui formulir di bawah ini. Saya siap membantu Anda mewujudkan ide-ide hebat Anda!
                     </p>
                 </motion.header>
 
@@ -200,7 +200,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         <div className="space-y-6">
                             <h3 className="text-[#fbbf24] font-black uppercase tracking-widest text-xs italic border-l-2 border-[#fbbf24] pl-3">Contact Info</h3>
                             <div className="space-y-4">
-                                <BigContactCard icon={<FaEnvelope />} label="Email" value="alifharyanto201012@gmail.com" href="mailto:alifharyanto201012@gmail.com" />
+                                <BigContactCard icon={<FaEnvelope />} label="Email" value="alifharyanto.depok@gmail.com" href="mailto:alifharyanto.depok@gmail.com" />
                                 <BigContactCard icon={<FaWhatsapp />} label="WhatsApp" value="+62 895-4042-09300" href="https://wa.me/62895404209300" />
                                 <BigContactCard icon={<FaLocationDot />} label="Location" value="Depok, West Java" href="#" />
                             </div>
@@ -212,6 +212,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                             <div className="flex gap-4">
                                 <SocialLink href="https://github.com/alifharyanto" icon={<FaGithub />} />
                                 <SocialLink href="https://www.instagram.com/44mhmdaliff_/" icon={<FaInstagram />} />
+                                <SocialLink href="https://www.threads.com/@44mhmdaliff_" icon={<FaThreads />} />
                                 <SocialLink href="https://x.com/alifxfluxy" icon={<FaXTwitter />} />
                                 <SocialLink href="https://tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
                             </div>
@@ -234,52 +235,80 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <p className="text-white/30 text-sm font-black">2026</p>
             </div>
 
-            <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
-                    <div className="col-span-2 space-y-6">
-                        <div className="flex items-center gap-4">
-                            <img src="/photo-portofolio.png" className="w-14 h-14 rounded-full border border-[#fbbf24] object-cover" alt="Profile" />
-                            <div>
-                                <h3 className="text-white font-bold text-xl uppercase italic">Muhammad Alif</h3>
-                                <p className="text-gray-500 text-xs font-medium">Software Engineering Student</p>
-                            </div>
-                        </div>
-                        <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
-                            Creating programs is not just a job, but also an art that has aesthetic value. Let's build something amazing.
-                        </p>
-                        <div className="flex gap-4 pt-2">
-                            <SocialLink href="https://www.instagram.com/44mhmdaliff_/" icon={<FaInstagram />} />
-                            <SocialLink href="https://x.com/alifxfluxy" icon={<FaXTwitter />} />
-                            <SocialLink href="https://tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
-                        </div>
-                    </div>
+      {/* FOOTER DESKTOP */}
+      <footer className="relative z-10 hidden md:block bg-[#1e1e1f]/90 backdrop-blur-md border-t border-[#383838] pt-20 pb-10 px-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-4 gap-12">
+          <div className="col-span-2 space-y-6">
+            <div className="flex items-center gap-4">
+              <img src="/photo-portofolio.png" className="w-14 h-14 rounded-full border border-[#fbbf24] object-cover" />
+              <div>
+                <h3 className="text-white font-bold text-xl uppercase italic">Muhammad Alif</h3>
+                <p className="text-gray-500 text-xs font-medium">Software Engineering Student</p>
+              </div>
+            </div>
+            <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
+              Creating programs is not just a job, but also an art that has aesthetic value. Let's build something amazing.
+            </p>
+            <div className="flex gap-4 pt-2">
+              <SocialLink href="https://www.instagram.com/44mhmdaliff_/?utm_source=ig_web_button_share_sheet" icon={<FaInstagram />} />
+              <SocialLink href="https://www.threads.com/@44mhmdaliff_" icon={<FaThreads />} />
+              <SocialLink href="https://x.com/alifxfluxy" icon={<FaXTwitter />} />
+              <SocialLink href="https://tiktok.com/@hahahahahahabruhh" icon={<FaTiktok />} />
+            </div>
+          </div>
 
-                    <div className="space-y-6">
-                        <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Shortcuts</h4>
-                        <div className="flex flex-col gap-3">
-                            {navItems.map(item => (
-                                <Link key={item.name} href={item.path} className="text-gray-500 hover:text-[#fbbf24] text-sm transition-all flex items-center gap-2 group">
-                                    <FaChevronRight size={8} className="group-hover:translate-x-1 transition-transform" /> {item.name}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
+          <div className="space-y-6">
+            <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Shortcuts</h4>
+            <div className="flex flex-col gap-3">
+              {navItems.map(item => (
+                <Link key={item.name} href={item.path} className="text-gray-500 hover:text-[#fbbf24] text-sm transition-all flex items-center gap-2 group">
+                  <FaChevronRight size={8} className="group-hover:translate-x-1 transition-transform" /> {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-                    <div className="space-y-6">
-                        <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
-                        <div className="space-y-4">
-                            <ContactItem icon={<FaEnvelope />} label="Email Me" value="alifharyanto201012@gmail.com" href="mailto:alifharyanto201012@gmail.com" />
-                            <ContactItem icon={<FaWhatsapp />} label="WhatsApp" value="+62 895-4042-09300" href="https://wa.me/62895404209300" />
-                            <ContactItem icon={<FaGithub />} label="GitHub" value="alifharyanto" href="https://github.com/alifharyanto" />
-                        </div>
-                    </div>
+          <div className="space-y-6">
+            <h4 className="text-white font-bold text-xs uppercase tracking-widest border-l-2 border-[#fbbf24] pl-3">Get in Touch</h4>
+            <div className="space-y-3">
+              <a href="mailto:alifharyanto.depok@gmail.com" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
+                  <FaEnvelope size={14} />
                 </div>
-
-                <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center opacity-40">
-                    <p className="text-[10px] text-white font-bold uppercase tracking-widest">© 2026 Muhammad Alif Haryanto • All Rights Reserved</p>
-                    <p className="text-[10px] text-white font-bold uppercase tracking-widest italic tracking-tighter">Handcrafted with Style</p>
+                <div className="overflow-hidden">
+                  <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">Email Me</p>
+                  <p className="text-white text-[11px] font-bold truncate">alifharyanto.depok@gmail.com</p>
                 </div>
-            </footer>
+              </a>
+
+              <a href="https://wa.me/62895404209300" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
+                  <FaWhatsapp size={14} />
+                </div>
+                <div className="overflow-hidden">
+                  <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">WhatsApp</p>
+                  <p className="text-white text-[11px] font-bold truncate">+62 895-4042-09300</p>
+                </div>
+              </a>
+
+              <a href="https://github.com/alifharyanto" target="_blank" className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#fbbf24]/30 transition-all group">
+                <div className="w-8 h-8 bg-[#fbbf24]/10 rounded-lg flex items-center justify-center text-[#fbbf24] group-hover:scale-110 transition-transform">
+                  <FaGithub size={14} />
+                </div>
+                <div className="overflow-hidden">
+                  <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tighter">GitHub</p>
+                  <p className="text-white text-[11px] font-bold truncate">alifharyanto</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center opacity-40">
+          <p className="text-[10px] text-white font-bold uppercase tracking-widest">© 2026 Muhammad Alif Haryanto • All Rights Reserved</p>
+          <p className="text-[10px] text-white font-bold uppercase tracking-widest italic tracking-tighter">Handcrafted with Style</p>
+        </div>
+      </footer>
 
 
       {/* NAVBAR MOBILE */}
